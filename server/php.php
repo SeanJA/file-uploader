@@ -72,13 +72,15 @@ abstract class Uploader {
 	 * @param string $ext The file's extension
 	 */
 	private function validateExtension($ext){
+		$ext = strtolower($ext);
 		//make sure that the file has one of the allowed extensions
 		if($this->validExtensions && !in_array($ext, $this->validExtensions)){
 			$these = implode(', ', $this->validExtensions);
+                        $this->error = 'File has an invalid extension ('.$ext.'), it'
 			if(count($this->validExtensions) > 1){
-				$this->error = 'File has an invalid extension, it should be one of '. $these.'.';
+				$this->error .= ' should be one of '. $these.'.';
 			} else {
-				$this->error = 'File has an invalid extension, it can only be a(n) '. $these.'.';
+				$this->error = ' can only be a(n) '. $these.'.';
 			}
 			return FALSE;
 		}
