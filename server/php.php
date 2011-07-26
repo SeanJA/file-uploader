@@ -92,7 +92,7 @@ abstract class Uploader {
 	 * @return string
 	 */
 	private function removeBadCharacters($filename){
-		$seach = array('\\','/',':','*','?','"','<','>','|');
+		$search = array('\\','/',':','*','?','"','<','>','|');
 		$replace = '_';
 		return str_replace($search, $replace, $filename);
 	}
